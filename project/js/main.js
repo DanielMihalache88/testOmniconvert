@@ -23,7 +23,7 @@ function getNews() {
     $.ajax({
         method: 'GET',
         url: 'http://www.mocky.io/v2/58fda6ce0f0000c40908b8c8',
-        dataType: 'json'
+        dataType: 'jsonp'
     }).done(function(data){
         $('.news__content').html('');
         var news = data.news;
