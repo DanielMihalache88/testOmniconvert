@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omniconvert Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <ul class="tabs">
+        <li class="tab-link" data-tab="tab-one"><span>News Feed</span></li>
+        <li class="tab-link" data-tab="tab-two"><span>Card</span></li>
+    </ul>    
+    <div id="tab-one" class="tab-content">
+        <div class="news">
+            <div class="news__header">
+                <h2>Latest News</h2>
+                <div class="slider-controls">
+                    <span data-slide="slide-0"></span>
+                    <span data-slide="slide-1"></span>
+                    <span data-slide="slide-2"></span>
+                </div>
+            </div>
+            <div class="news__content">
+            </div>
+        </div>
+    </div>
+    <div id="tab-two" class="tab-content">
+        <div class="card">
+            <div class="card__header">
+                <p><strong>$167</strong> still needed for this project</p>
+            </div>
+            <div class="card__progress-bar">
+                <span class="progress"></span>
+            </div>
+            <div class="card__content">
+                <p><span class="color-orange">Only 3 days left</span> to fund this project.</p>
+                <p>Join the <strong>42</strong> others donors who have already supported this project. Every dollar helps.</p>
+                <form action="/action.php" method="post" class="card__form">
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" name="quantity" value="50">
+                    <button class="button button--green" type="submit">Give Now</button>
+                </form>
+                <a href="#"><em>Why give $50?</em></a>
+            </div>
+            <div class="card__footer">
+                <a href="#" class="button">Save for later</a>
+                <a href="#" class="button">Tell your friends</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
