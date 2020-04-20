@@ -47,49 +47,50 @@ function getNews() {
             sliderItems[i].classList.add('slide-' + [i]);
         }
 
-        var $dots = $('.slider-controls span');
         var slides = $('.slider-item');
-        var current = 0;
+        var dots = $('.slider-controls span');
+        current = 0;
 
-        $dots.on('click', function() {
-            var $dotId = $(this).attr('data-slide');
-            $(this).siblings().removeClass('js--active');
-            $(this).addClass('js--active');
+        function reset() {
             $('.slider-item').removeClass('js--show');
-            $('.' + $dotId).addClass('js--show');
-            slideRight()
-        });
-
-        function slideRight() {
-
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = 'none';
-            }
-
-            current++
-
-            if (current > slides.length) {
-                current = 1;
-            }
-
-            for (i = 0; i < $dots.length; i++) {
-                $dots[i].className = $dots[i].className.replace("js--active", "");
-            }
-
-            slides[current - 1].style.display = "block";
-            $dots[current - 1].className += "js--active";
+            $('.slider-controls span').removeClass('js--active');
         }
 
-        setInterval(slideRight, 3000);
+        function startSlide() {
+            reset();
+            slides[0].classList.add('js--show');
+            dots[0].classList.add('js--active');
+        }
 
-        $dots.on('click', function() {
-            var $dotId = $(this).attr('data-slide');
-            $(this).siblings().removeClass('js--active');
-            $(this).addClass('js--active');
-            $('.slider-item').removeClass('js--show');
-            $('.' + $dotId).addClass('js--show');
-            slideRight()
+        function slideRight() {
+            reset();
+            if (current === slides.length - 1) {
+                current = -1;
+            }
+
+            dots[current + 1].classList.add('js--active');
+            slides[current + 1].classList.add('js--show');
+
+            current++;
+        }
+
+        function startHere() {
+            reset();
+            slides[current].classList.add('js--show');
+            dots[current].classList.add('js--active');
+        }
+
+        dots.on('click', function() {
+            current = parseInt($(this).attr('data-slide'));
+
+            startHere();
+
+            timer = setInterval(slideRight, 15000);
+            clearInterval(timer);
         });
+
+        startSlide();
+        var timer = setInterval(slideRight, 15000);
     });
 }
 getNews();
